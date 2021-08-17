@@ -22,7 +22,7 @@ function launchModal() {
   modalbg.style.display = "block";
 }
 
-//close modal event
+//close modal event(utilisation du forEach() en prévision de la fermeture de la modal de confirmation)
 closeBtn.forEach((btn)=> btn.addEventListener("click",closeModal));
 
 //close modal form
