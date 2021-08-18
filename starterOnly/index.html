@@ -6,11 +6,9 @@
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <link rel="stylesheet" href="modal.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link
-      href="https://fonts.googleapis.com/css?family=DM+Sans"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css?family=DM+Sans" rel="stylesheet"/>
   </head>
+
   <body>
     <div class="topnav" id="myTopnav">
       <div class="header-logo">
@@ -61,74 +59,73 @@
             <form name="reserve" action="index.html" method="get" id="myForm" >
 
               <div class="formData">
-                 <label>Prénom</label>
+                 <label for="firstName" id="firstName">Prénom</label>
                  <input class="text-control" type="text" id="first" name="first" minlength=2 required/>
               </div>
 
               <div class="formData">
-                <label>Nom</label>
+                <label for="lastName" id="lastName">Nom</label>
                 <input class="text-control" type="text" id="last" name="last" minlength=2 required/>
               </div>
 
               <div class="formData">
-                <label>E-mail</label>
+                <label for="mail" id="mail">E-mail</label>
                 <input class="text-control" type="email" id="email" name="email" required/>
               </div>
 
               <div class="formData">
-                <label>Date de naissance</label>
+                <label for="birthDate" id="birthDate">Date de naissance</label>
                 <input class="text-control" type="date" id="birthdate" name="birthdate" required/>
               </div>
 
               <div class="formData">
-                <label>À combien de tournois GameOn avez-vous déjà participé ?</label>
+                <label for="participate" id="participate">À combien de tournois GameOn avez-vous déjà participé ?</label>
                 <input type="number" class="text-control" id="quantity" name="quantity" min=0 max=99  required>
               </div>
 
              
               <div class="formData">
-                <label class="text-label">Quelles villes ?</label><br>
+                <label class="text-label" id="town">Quelles villes ?</label><br>
                 <input class="checkbox-input" type="radio" id="location1" name="location" value="New York"/>
-
-                <label class="checkbox-label" for="location1">
+                  <label class="checkbox-label" for="location1" id="location1">
                   <span class="checkbox-icon"></span> New York</label >
 
                 <input class="checkbox-input" type="radio" id="location2" name="location" value="San Francisco"/>
-                <label class="checkbox-label" for="location2">
+                <label class="checkbox-label" for="location2" id="location2">
                   <span class="checkbox-icon"></span> San Francisco</label>
                 
                 <input class="checkbox-input" type="radio" id="location3" name="location" value="Seattle"/>
-                <label class="checkbox-label" for="location3">
+                <label class="checkbox-label" for="location3" id="location3">
                   <span class="checkbox-icon"></span> Seattle</label>
                
                 <input class="checkbox-input" type="radio" id="location4" name="location" value="Chicago"/>
-                <label class="checkbox-label" for="location4">
+                <label class="checkbox-label" for="location4" id="location4">
                   <span class="checkbox-icon"></span> Chicago</label>
                
                 <input class="checkbox-input" type="radio" id="location5" name="location" value="Boston"/>
-                <label class="checkbox-label" for="location5">
+                <label class="checkbox-label" for="location5" id="location5">
                   <span class="checkbox-icon"></span>Boston</label>
                 
                 <input class="checkbox-input" type="radio" id="location6" name="location" value="Portland"/>
-                <label class="checkbox-label" for="location6">
+                <label class="checkbox-label" for="location6" id="location6">
                   <span class="checkbox-icon"></span>Portland</label>
                
               </div>
 
               <div class="formData">
                 <input class="checkbox-input" type="checkbox" id="checkbox1" checked/>
-                <label class="checkbox2-label" for="checkbox1" required>
+                <label class="checkbox2-label" for="checkbox1" id="checkBox1" required>
                   <span class="checkbox-icon"></span>
                   J'ai lu et accepté les conditions d'utilisation.
-                </label><br>
+                </label>
 
                 <input class="checkbox-input" type="checkbox" id="checkbox2" />
-                <label class="checkbox2-label" for="checkbox2">
+                <label class="checkbox2-label" for="checkbox2" id="checkBox2">
                   <span class="checkbox-icon"></span>
                    Je souhaite être prévenu des prochains évènements.
-                </label> <br>
+                </label> 
               </div>
-              
+
               <input class="btn-submit" type="submit" class="button" value="C'est parti"/>
             </form>
             
