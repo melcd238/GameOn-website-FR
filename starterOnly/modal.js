@@ -48,6 +48,8 @@ validationForm.addEventListener("submit", (e)=>{
   e.preventDefault();
   const selected = [...inputsLocation].some(inputLocation => inputLocation.checked);
   const regexFirstLast = /^([a-zA-Z-\s]){2,30}$/;
+  const regexMail =  /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
+  const regexQuantity =/^[0-9][0-9]?$|^99$/;
 
  if(!inputFirst.value || !inputLast.value || !inputEmail.value || !inputBirthdate.value || !inputQuantity.value || !selected || inputCondition.checked == false){
      
@@ -55,8 +57,17 @@ validationForm.addEventListener("submit", (e)=>{
      
       }else if(regexFirstLast.test(inputFirst.value) ==false || regexFirstLast.test(inputLast.value) ==false  ){
         alert('Ce champs doit comporté au moins 2 lettres, et aucun chiffre')
-   
- } else {
+
+      }else if(regexMail.test(inputEmail.value) == false){
+        alert("Ce champs doit être de type email")
+      }
+      else if(regexQuantity.test(inputQuantity.value) == false){
+
+        alert("vous devez choisir un nombre entre 0 et 99")
+
+      }
+ 
+ else {
     alert('ok!')
  }
  
