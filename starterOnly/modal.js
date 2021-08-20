@@ -45,7 +45,6 @@ function closeModal(){
 
 // Validation du formulaire en utilisant form de js
 validationForm.addEventListener("submit", (e)=>{
-  e.preventDefault();
   const selected = [...inputsLocation].some(inputLocation => inputLocation.checked);
   const regexFirstLast = /^([a-zA-Z-\s]){2,30}$/;
   const regexMail =  /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
@@ -54,16 +53,18 @@ validationForm.addEventListener("submit", (e)=>{
  if(!inputFirst.value || !inputLast.value || !inputEmail.value || !inputBirthdate.value || !inputQuantity.value || !selected || inputCondition.checked == false){
      
   alert("Tous les champs doivent être remplis, une ville doit être selectionné et les conditions d'utlisation checkés!")
-     
+        e.preventDefault();
       }else if(regexFirstLast.test(inputFirst.value) ==false || regexFirstLast.test(inputLast.value) ==false  ){
         alert('Ce champs doit comporté au moins 2 lettres, et aucun chiffre')
-
+        e.preventDefault();
       }else if(regexMail.test(inputEmail.value) == false){
         alert("Ce champs doit être de type email")
+        e.preventDefault();
       }
       else if(regexQuantity.test(inputQuantity.value) == false){
 
         alert("vous devez choisir un nombre entre 0 et 99")
+        e.preventDefault();
 
       }
  
