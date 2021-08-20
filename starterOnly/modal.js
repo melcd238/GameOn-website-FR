@@ -47,10 +47,14 @@ function closeModal(){
 validationForm.addEventListener("submit", (e)=>{
   e.preventDefault();
   const selected = [...inputsLocation].some(inputLocation => inputLocation.checked);
+  const regexFirstLast = /^([a-zA-Z-\s]){2,30}$/;
 
  if(!inputFirst.value || !inputLast.value || !inputEmail.value || !inputBirthdate.value || !inputQuantity.value || !selected || inputCondition.checked == false){
      
-  alert("Tous les champs doivent être remplis!")
+  alert("Tous les champs doivent être remplis, une ville doit être selectionné et les conditions d'utlisation checkés!")
+     
+      }else if(regexFirstLast.test(inputFirst.value) ==false || regexFirstLast.test(inputLast.value) ==false  ){
+        alert('Ce champs doit comporté au moins 2 lettres, et aucun chiffre')
    
  } else {
     alert('ok!')
