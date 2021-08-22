@@ -43,7 +43,7 @@ function closeModal(){
 
       
 
-// Validation du formulaire en utilisant form de js
+// Validation du formulaire: 
 validationForm.addEventListener("submit", (e)=>{
   const selected = [...inputsLocation].some(inputLocation => inputLocation.checked);
   const regexFirstLast = /^([a-zA-Z-\s]){2,30}$/;
