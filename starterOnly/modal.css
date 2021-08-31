@@ -322,7 +322,8 @@ input[data-error]::after {
   transform: rotate(-45deg);
 }
 .btn-submit,
-.btn-signup {
+.btn-signup,
+.btn-close {
   background: #fe142f;
   display: block;
   margin: 0 auto;
@@ -333,6 +334,20 @@ input[data-error]::after {
   cursor: pointer;
   border: 0;
 }
+/* Modal confirm */
+.btn-close{
+  margin-bottom: 10px;
+}
+.content-confirm{
+  height: inherit;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.btn-close:hover{
+  background: #3876ac;
+}
+
 /* custom select styles */
 .custom-select {
   position: relative;

@@ -9,11 +9,13 @@ function editNav() {
 
 // DOM Elements
 const modalbg = document.querySelector(".bground");
+const confirmModal = document.querySelector("#confirmModal")
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formDatas = document.querySelectorAll(".formData");
    // DOM Elements add 
 const closeBtn = document.querySelectorAll(".close"); 
 const validationForm = document.querySelector('#validation')
+const btnClose = document.querySelector(".btn-close")
    // DOM Elements Form
 const inputFirst = document.querySelector('#first'); // doit être en lettre min ou maj et minlengt=2
 const inputLast = document.querySelector('#last');  // doit être en lettre min ou maj et minlengt=2
@@ -40,7 +42,13 @@ closeBtn.forEach((btn)=> btn.addEventListener("click",closeModal));
 //close modal form
 function closeModal(){
   modalbg.style.display = "none";
+  confirmModal.style.display = "none";
 };
+
+// close modal confirm with btn-close;
+btnClose.addEventListener("click", ()=>{
+  confirmModal.style.display = "none";
+})
 
 // Function to check validity of inputs :
 function checkValidityInput(){
@@ -114,7 +122,8 @@ validationForm.addEventListener("submit", (e)=>{
   e.preventDefault();
   checkValidityInput();
   if(formIsValid){
-    alert("formulaire ok!")
+    modalbg.style.display = "none";
+    confirmModal.style.display = "block";
   }
   
   
