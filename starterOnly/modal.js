@@ -23,7 +23,9 @@ const inputQuantity = document.querySelector('#quantity');//valeur numérique en
 const inputsLocation = document.querySelectorAll('input[name="location"]')//Une ville doit être selectionnée pour la validation du formulaire.
 const inputCondition = document.querySelector('input[name="checkbox1"]')// condition doit être selectionnée 
 
-   
+
+let formIsValid = false;
+  
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
@@ -40,100 +42,84 @@ function closeModal(){
   modalbg.style.display = "none";
 };
 
-// Function to use dataset in formdata: 
-formDatas.forEach(formData => formData.addEventListener("input",()=>{
+// Function to check validity of inputs :
+function checkValidityInput(){
   const regexFirstLast = /^([a-zA-Z-\s]){2,30}$/;
   const regexMail =  /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
   const regexQuantity =/^[0-9][0-9]?$|^99$/;
-  
-  if(!inputFirst.value || regexFirstLast.test(inputFirst.value) ==false){
-     formDatas[0].dataset.errorVisible = "true";
-     
-  }else{
-    formDatas[0].dataset.errorVisible = "false";
-  }
-  if(!inputLast.value || regexFirstLast.test(inputLast.value) ==false ){
-   
-    formDatas[1].dataset.errorVisible = "true";
-  }else{
-    formDatas[1].dataset.errorVisible = "false";
-  }
-  if(!inputEmail.value ||regexMail.test(inputEmail.value) == false ){
-    formDatas[2].dataset.errorVisible = "true";
-  }else{
-    formDatas[2].dataset.errorVisible = "false";
+  const selectedTown =  [...inputsLocation].some(inputLocation => inputLocation.checked)
 
-  }
-  if(!inputBirthdate.value){
+// inputFirst validity:
+if(!inputFirst.value || regexFirstLast.test(inputFirst.value) ==false){
+    formDatas[0].dataset.errorVisible = "true";
+    return formIsValid === false;
+}else{
+ formDatas[0].dataset.errorVisible = "false";
+}
+
+// inputLast validity:
+if(!inputLast.value || regexFirstLast.test(inputLast.value) ==false){
+  formDatas[1].dataset.errorVisible = "true";
+  return formIsValid === false;
+ }else{
+  formDatas[1].dataset.errorVisible = "false";
+}
+
+// Validation inputEmail:
+  if(!inputEmail.value ||regexMail.test(inputEmail.value) == false){
+   formDatas[2].dataset.errorVisible = "true";
+   return formIsValid === false;
+   }else{
+   formDatas[2].dataset.errorVisible = "false";
+ }
+
+// Validation inputBirthDate:
+   if(!inputBirthdate.value) {
     formDatas[3].dataset.errorVisible = "true";
-  }else{
+    return formIsValid === false;
+   }else{
     formDatas[3].dataset.errorVisible = "false";
   }
-  if(!inputQuantity.value || regexQuantity.test(inputQuantity.value) == false){
-    formDatas[4].dataset.errorVisible = "true";
+
+// Validation inputQuantity:
+   if(!inputQuantity.value || regexQuantity.test(inputQuantity.value) == false){
+        formDatas[4].dataset.errorVisible = "true";
+        return formIsValid === false;
   }else{
-    formDatas[4].dataset.errorVisible = "false";
+        formDatas[4].dataset.errorVisible = "false";
   }
-
-}));
-
-let formIsValid = false;
-
-
-
   
-//const regexFirstLast = /^([a-zA-Z-\s]){2,30}$/;
-//const regexMail =  /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
-//const regexQuantity =/^[0-9][0-9]?$|^99$/;
-//const regexbirthDate = /^\d{4}\-(0?[1-9]|1[012])\-(0?[1-9]|[12][0-9]|3[01])$/;
- 
+// Validation selectedTown:
+   if(!selectedTown ){
+      formDatas[5].dataset.errorVisible = "true";
+      return formIsValid === false;
+  }else{
+      formDatas[5].dataset.errorVisible = "false";
+  }
+  
+// Validation inputCondition:
+   if(inputCondition.checked == false ){
+      formDatas[6].dataset.errorVisible = "true";
+      return formIsValid === false;
+   }else{
+     formDatas[6].dataset.errorVisible = "false";
+  } 
 
-
-
-
-
-
-
+   return formIsValid = true;
+}
     
 
 // Validation du formulaire: 
 validationForm.addEventListener("submit", (e)=>{
-   
-  const selectedTown =  [...inputsLocation].some(inputLocation => inputLocation.checked)
-  const regexFirstLast = /^([a-zA-Z-\s]){2,30}$/;
-  const regexMail =  /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
-  const regexQuantity =/^[0-9][0-9]?$|^99$/;  
+  e.preventDefault();
+  checkValidityInput();
+  if(formIsValid){
+    alert("formulaire ok!")
+  }
   
-
-  if(!inputFirst.value || !inputLast.value || !inputEmail.value || !inputBirthdate.value || !inputQuantity.value || !selectedTown || inputCondition.checked == false){
-    e.preventDefault();
-  alert("Tous les champs doivent être remplis, une ville doit être selectionné et les conditions d'utlisation checkés!")
-       
-      }else if(regexFirstLast.test(inputFirst.value) ==false || regexFirstLast.test(inputLast.value) ==false  ){
-        e.preventDefault();
-       
-       alert('Ce champs doit comporté au moins 2 lettres, et aucun chiffre')
-        
-      }else if(regexMail.test(inputEmail.value) == false){
-        e.preventDefault();
-        alert("Ce champs doit être de type email")
-       
-       
-      }
-      else if(regexQuantity.test(inputQuantity.value) == false){
-        e.preventDefault();
-
-        alert("vous devez choisir un nombre entre 0 et 99")
-        
-
-      }
- 
- else {
-  
-    alert('ok!')
- }
- 
   
 });
+
+
 
 
