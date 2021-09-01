@@ -17,7 +17,7 @@ body {
   background-image: url("background.png");
   font-family: var(--font-default);
   font-size: 18px;
-  max-width: 1300px;
+  max-width: 100%; /*modif*/
   margin: 0 auto;
 }
 
@@ -51,6 +51,10 @@ img {
   font-size: 20px;
   font-family: Roboto, sans-serif;
 }
+.topnav a span{
+  border-bottom: 1px solid #ffffff; /*ajout*/
+}
+
 
 .topnav a:hover {
   background-color: #ff0000;
@@ -66,40 +70,10 @@ img {
 
 .topnav .icon {
   display: none;
-}
-
-@media screen and (max-width: 768px) {
-  .topnav a {display: none;}
-  .topnav a.icon {
-    float: right;
-    display: block;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .topnav.responsive {position: relative;}
-  .topnav.responsive .icon {
-    position: absolute;
-    right: 0;
-    top: 0;
-  }
-  .topnav.responsive a {
-    float: none;
-    display: block;
-    text-align: left;
-  }
+  color: #ff0000; /*Ajout*/
 }
 
 
-
- @media screen and (max-width: 540px) {
-  .topnav a {display: none;}
-  .topnav a.icon {
-    float: right;
-    display: block;
-    margin-top: -15px;
-  }
-} 
 
 main {
   font-size: 130%;
@@ -166,7 +140,7 @@ main {
   height: 100%;
   width: 100%;
   overflow: auto;
-  background-color: rgba(26, 39, 156, 0.4);
+  background-color:#fff ; /*modif*/
 }
 
 .content {
@@ -181,6 +155,15 @@ main {
   position: relative;
   color: #fff;
   padding-top: 10px;
+}
+fieldset{ /*ajout*/
+  border: none;
+}
+.content-confirm{ /*ajout*/
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-around;
 }
 
 .modal-body {
@@ -226,12 +209,12 @@ input {
 .formData[data-error-visible="true"] .text-control {
   border: 2px solid #e54858;
 }
- 
+/* 
 input[data-error]::after {
     content: attr(data-error);
     font-size: 0.4em;
     color: red;
-} 
+} */
 .checkbox-label,
 .checkbox2-label {
   position: relative;
@@ -334,20 +317,6 @@ input[data-error]::after {
   cursor: pointer;
   border: 0;
 }
-/* Modal confirm */
-.btn-close{
-  margin-bottom: 10px;
-}
-.content-confirm{
-  height: inherit;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-.btn-close:hover{
-  background: #3876ac;
-}
-
 /* custom select styles */
 .custom-select {
   position: relative;
@@ -493,6 +462,28 @@ footer {
   padding-right: 2vw;
   margin: 0 20px;
 }
+
+/*Media queries*/
+ 
+@media screen and (max-width: 1200px) {
+  .topnav.responsive {position: relative;}
+  .topnav.responsive .icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .topnav.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+  .topnav a {display: none;}
+  .topnav a.icon {
+    float: right;
+    display: block;
+  }
+}
+
 @media screen and (max-width: 800px) {
   .hero-section {
     display: block;
@@ -502,6 +493,7 @@ footer {
     background: #fff;
     color: #000;
     padding: 20px;
+    min-width: 0;/*ajout*/
   }
   .hero-content::after {
     content: unset;
@@ -512,6 +504,8 @@ footer {
   .hero-headline {
     font-size: 4.5rem;
     white-space: normal;
+    font-weight: bold; /*ajout*/
+    text-align: center;/*ajout*/
   }
   .hero-text {
     width: unset;
@@ -530,7 +524,52 @@ footer {
     margin-top: 50px;
     text-align: center;
   }
-}
+} 
+@media screen and (max-width: 540px) {
+  .topnav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .topnav a {display: none;}
+  .topnav a.icon {
+    float: right;
+    display: block;
+  }
+  .topnav a.active {
+    border-radius: 15px;
+  }
+  .topnav.responsive {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .navlinks{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  main{
+    margin:0;
+  }
+  .hero-text{
+    padding-right:12px;
+    font-size: 1.1rem;
+  }
+  .hero-headline {
+    font-size: 2.2rem;
+    font-weight: bold;
+  }
+
+  .header-logo img{
+    width: 70%;
+  }
+  .bground{
+    position : absolute;
+    top:66px;
+  }
+ 
+} 
 
 @keyframes modalopen {
   from {
@@ -541,4 +580,3 @@ footer {
     opacity: 1;
   }
 }
-

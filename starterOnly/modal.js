@@ -43,11 +43,13 @@ closeBtn.forEach((btn)=> btn.addEventListener("click",closeModal));
 function closeModal(){
   modalbg.style.display = "none";
   confirmModal.style.display = "none";
+  document.location.reload()
 };
 
 // close modal confirm with btn-close;
 btnClose.addEventListener("click", ()=>{
   confirmModal.style.display = "none";
+  document.location.reload()
 })
 
 // Function to check validity of inputs :
@@ -119,8 +121,9 @@ if(!inputLast.value || regexFirstLast.test(inputLast.value) ==false){
 
 // Validation du formulaire: 
 validationForm.addEventListener("submit", (e)=>{
-  e.preventDefault();
+  
   checkValidityInput();
+  e.preventDefault();
   if(formIsValid){
     modalbg.style.display = "none";
     confirmModal.style.display = "block";
