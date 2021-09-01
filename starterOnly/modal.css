@@ -482,9 +482,6 @@ footer {
     float: right;
     display: block;
   }
-}
-
-@media screen and (max-width: 800px) {
   .hero-section {
     display: block;
     box-shadow: unset;
