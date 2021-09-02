@@ -54,7 +54,7 @@ btnClose.addEventListener("click", ()=>{
 
 // Function to check validity of inputs :
 function checkValidityInput(){
-  const hasError = []
+  const hasError = [];
   const regexFirstLast = /^([a-zA-Z-\s]){2,30}$/;
   const regexMail =  /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
   const regexQuantity =/^[0-9][0-9]?$|^99$/;
@@ -116,7 +116,7 @@ if(!inputLast.value || regexFirstLast.test(inputLast.value) ==false){
      formDatas[6].dataset.errorVisible = "false";
   } 
 
-  if(hasError.length < 0){
+  if(hasError.length > 0){
     return formIsValid = false;
   }else{
     return formIsValid = true;

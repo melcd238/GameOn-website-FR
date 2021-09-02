@@ -425,7 +425,7 @@ input[data-error]::after {
   white-space: nowrap;
 }
 .hero-text {
-  width: 146%;
+  width: 130%;/*modif*/
   font-weight: normal;
   margin-top: 57px;
   padding: 0;
@@ -446,6 +446,7 @@ input[data-error]::after {
   height: 100%;
   display: block;
   padding: 0;
+  object-fit: cover;/*ajout*/
 }
 .copyrights {
   color: #fe142f;
