@@ -54,6 +54,7 @@ btnClose.addEventListener("click", ()=>{
 
 // Function to check validity of inputs :
 function checkValidityInput(){
+  const hasError = []
   const regexFirstLast = /^([a-zA-Z-\s]){2,30}$/;
   const regexMail =  /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
   const regexQuantity =/^[0-9][0-9]?$|^99$/;
@@ -62,7 +63,7 @@ function checkValidityInput(){
 // inputFirst validity:
 if(!inputFirst.value || regexFirstLast.test(inputFirst.value) ==false){
     formDatas[0].dataset.errorVisible = "true";
-    return formIsValid === false;
+    hasError.push(true)
 }else{
  formDatas[0].dataset.errorVisible = "false";
 }
@@ -70,7 +71,7 @@ if(!inputFirst.value || regexFirstLast.test(inputFirst.value) ==false){
 // inputLast validity:
 if(!inputLast.value || regexFirstLast.test(inputLast.value) ==false){
   formDatas[1].dataset.errorVisible = "true";
-  return formIsValid === false;
+  hasError.push(true)
  }else{
   formDatas[1].dataset.errorVisible = "false";
 }
@@ -78,15 +79,15 @@ if(!inputLast.value || regexFirstLast.test(inputLast.value) ==false){
 // Validation inputEmail:
   if(!inputEmail.value ||regexMail.test(inputEmail.value) == false){
    formDatas[2].dataset.errorVisible = "true";
-   return formIsValid === false;
+   hasError.push(true)
    }else{
    formDatas[2].dataset.errorVisible = "false";
  }
 
 // Validation inputBirthDate:
-   if(!inputBirthdate.value) {
+   if(!inputBirthdate.value || isNaN(Date.parse(inputBirthdate.value))) {
     formDatas[3].dataset.errorVisible = "true";
-    return formIsValid === false;
+    hasError.push(true)
    }else{
     formDatas[3].dataset.errorVisible = "false";
   }
@@ -94,7 +95,7 @@ if(!inputLast.value || regexFirstLast.test(inputLast.value) ==false){
 // Validation inputQuantity:
    if(!inputQuantity.value || regexQuantity.test(inputQuantity.value) == false){
         formDatas[4].dataset.errorVisible = "true";
-        return formIsValid === false;
+        hasError.push(true)
   }else{
         formDatas[4].dataset.errorVisible = "false";
   }
@@ -102,7 +103,7 @@ if(!inputLast.value || regexFirstLast.test(inputLast.value) ==false){
 // Validation selectedTown:
    if(!selectedTown ){
       formDatas[5].dataset.errorVisible = "true";
-      return formIsValid === false;
+      hasError.push(true)
   }else{
       formDatas[5].dataset.errorVisible = "false";
   }
@@ -110,12 +111,18 @@ if(!inputLast.value || regexFirstLast.test(inputLast.value) ==false){
 // Validation inputCondition:
    if(inputCondition.checked == false ){
       formDatas[6].dataset.errorVisible = "true";
-      return formIsValid === false;
+      hasError.push(true)
    }else{
      formDatas[6].dataset.errorVisible = "false";
   } 
 
-   return formIsValid = true;
+  if(hasError.length < 0){
+    return formIsValid = false;
+  }else{
+    return formIsValid = true;
+  }
+
+   
 }
     
 
