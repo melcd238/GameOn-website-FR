@@ -458,6 +458,9 @@ input[data-error]::after {
 .hero-section > .btn-signup {
   display: none;
 }
+.content-confirm{ /*ajout*/
+  max-height:88% ;
+}
 footer {
   padding-left: 2vw;
   padding-right: 2vw;
@@ -521,6 +524,10 @@ footer {
     margin: 32px auto 10px;
     padding: 12px 35px;
   }
+  .content-confirm{ /*ajout*/
+    max-height:90% ;
+  }
+ 
   .copyrights {
     margin-top: 50px;
     text-align: center;
@@ -567,8 +574,15 @@ footer {
   }
   .bground{
     position : absolute;
-    top:66px;
+    top:90px;
+    min-height: 0;
+    overflow: visible;
   }
+  .content-confirm{
+    min-height:900px ;
+  }
+ 
+  
  
 } 
 
