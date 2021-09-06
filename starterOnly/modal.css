@@ -580,6 +580,12 @@ footer {
   }
   .content-confirm{
     min-height:900px ;
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+  }
+  .content{
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 0px;
   }
  
   
