@@ -128,9 +128,9 @@ if(!inputLast.value || regexFirstLast.test(inputLast.value) ==false){
 
 // Validation du formulaire: 
 validationForm.addEventListener("submit", (e)=>{
-  
-  checkValidityInput();
   e.preventDefault();
+  checkValidityInput();
+  
   if(formIsValid){
     modalbg.style.display = "none";
     confirmModal.style.display = "block";
